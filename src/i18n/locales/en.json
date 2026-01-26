@@ -1,0 +1,19 @@
+{
+    "home":"Home",
+    "movies":"Movies",
+    "favorite":"Favorite",
+    "about":"About",
+    "login":"Login",
+    "register":"Register",
+    "home page":"Home Page",
+    "favorite movies":"Favorite Movies",
+    "search":"Search...",
+    "email":"Email",
+    "password":"Password",
+    "forget password":"Forget Password?",
+    "register now":"Register Now",
+    "don't have acount":"Don't have acount?",
+    "username":"Username",
+    "confirm password":"Confirm Password",
+    "already have account":"Already have account?"
+}

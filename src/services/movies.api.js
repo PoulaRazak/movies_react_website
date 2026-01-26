@@ -20,3 +20,7 @@ export function getSearch(query, page = 1){
         }
     })
 }
+
+export function getTrendingMovies(){
+    return axiosInstance.get("trending/movie/day")
+}

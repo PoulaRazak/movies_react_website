@@ -1,11 +1,28 @@
 import { IoSearch } from "react-icons/io5";
 import { FcVideoCall } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
-import { useState } from "react";
+import { useEffect, useState} from "react";
+import { useTranslation } from 'react-i18next';
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Navbar() {
+
+  const [theme,setTheme]=useState('dark')
+
+   useEffect(() => {
+  document.documentElement.setAttribute("data-theme", theme);
+}, [theme]);
+
+  const{t,i18n} =useTranslation()
+
+  const changeLanguage=()=>{
+    const newlang =i18n.language === 'en' ? 'ar' :'en';
+    i18n.changeLanguage(newlang)
+    localStorage.setItem('lang',newlang)
+
+  }
+
   const favorites = useSelector((state) => state.favorite.items);
 
   const [search, setSearch] = useState("");
@@ -26,28 +43,28 @@ function Navbar() {
   return (
     <>
       <div className="flex flex-row items-center p-4 bg-linear-to-r from-red-800 to-black text-white justify-between">
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center gap-1">
           <FcVideoCall className="text-2xl" />
 
           <h1 className="ml-2 text-xl font-bold">Movies</h1>
         </div>
         <div className="flex flex-row gap-4">
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
+          <Link to="/">{t('home')}</Link>
+          <Link to="/movies">{t('movies')}</Link>
 
           
-           {favorites.length === 0 ? <Link to="/favorite">Favorite</Link> : 
+           {favorites.length === 0 ? <Link to="/favorite">{t('favorite')}</Link> : 
             <div className="indicator cursor-pointer">
            <span className="indicator-item badge badge-error text-white w-4 h-4 p-1 top-1">
               {favorites.length}
             </span>
-            <Link to="/favorite">Favorite</Link>
+            <Link to="/favorite">{t('favorite')}</Link>
           </div>
 
            } 
           
-          <Link to="/about">About</Link>
-         <Link to="/login">Login</Link>
+         <Link to="/login">{t('login')}</Link>
+         <Link to="/register">{t('register')}</Link>
 
         </div>
         <div className="flex flex-row items-center gap-5">
@@ -55,7 +72,7 @@ function Navbar() {
             {showSarch && (
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder= {t("search")}
                 className="rounded-xl px-4 py-1  border border-gray-400 "
                 value={search}
                 onChange={(e) => {
@@ -73,16 +90,23 @@ function Navbar() {
             <IoSearch className="text-xl cursor-pointer" />
           </div>
           <div>
-            <button className="bg-blue-800 rounded py-1 px-2 cursor-pointer hover:bg-transparent">
-              Ar
-            </button>
+            
+            <button className="bg-blue-800 rounded py-1 px-2 cursor-pointer hover:bg-transparent"
+            onClick={()=>{changeLanguage()}}
+            >
+             {(i18n.language === 'en'? 'AR' : 'EN')} </button>
           </div>
-          <div className="cursor-pointer">
-            <Icon
+          <div className="cursor-pointer" 
+          onClick={()=>{
+                setTheme(theme == "light" ? "dark" :"light")
+              }}
+          >
+            {theme=='dark'?<Icon
               icon="streamline-ultimate-color:light-mode-bright-dark"
               width="24"
               height="24"
-            />
+            /> :<Icon icon="icon-park:dark-mode" width="32" height="32" /> }
+            
           </div>
           <div className="avatar">
             <div className="ring-primary ring-offset-base-100 w-6 rounded-full ring-2 ring-offset-2">

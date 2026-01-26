@@ -3,13 +3,18 @@ import { getMovieById } from "../../services/movies.api";
 import React, { useEffect, useState } from "react";
 import Spiner from "../../components/Spiner";
 import Toast from "../../components/toast";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
+import { saveToStorage, toggleFavorite } from "../../store/slices/favorite";
 
 
 
 function Deatails() {
 
+  
+
+
+  const [showToast,setShowToast]=useState(false);
  const loader= useSelector((state)=>state.loader.loader)
 
 
@@ -28,6 +33,28 @@ function Deatails() {
       });
   }, [id]);
 
+  const handleToast=()=>{
+      setShowToast(true)
+      
+              setTimeout(()=>{
+                setShowToast(false)
+              },2000);
+    }
+
+
+    const dispatch =useDispatch();
+  const favorite =useSelector((state)=>state.favorite.items);
+    const isFav = favorite.some((m)=> m.id === movie.id);
+
+    const handleClick=()=>{
+      dispatch(toggleFavorite(movie));
+      dispatch(saveToStorage());
+      if(!isFav){
+        handleToast()
+      }
+    }
+
+
   return (
     <>
 
@@ -40,6 +67,8 @@ function Deatails() {
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
         }}
       >
+            {showToast && <Toast text="Item added to favorite"/>}
+
         <div className="absolute inset-0 bg-black/70"></div>
 
         <div className="flex flex-row w-full gap-7 p-8 relative z-10 ">
@@ -90,7 +119,9 @@ function Deatails() {
             <p>{movie.overview}</p>
             <div className="flex flex-row items-center gap-3 my-2">
             <button className="btn btn-xl hover:bg-red-500 px-12">Watch</button>
-            <button className="btn btn-outline btn-secondary">
+            <button className="btn btn-outline btn-secondary"
+            onClick={handleClick}
+            >
               <Icon icon="iconamoon:heart" width="24" height="24" />
             </button>
 

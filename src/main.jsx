@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import store from './store/index.js'
 import { Provider } from 'react-redux'
+import i18n from './i18n/config.js'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

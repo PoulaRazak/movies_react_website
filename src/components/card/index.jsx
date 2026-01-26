@@ -16,13 +16,13 @@ function MovieCard({movies,onFav}){
    const isFav = favorites.some((m)=> m.id === movies.id);
 
 const onHandleCLick=()=>{
-  
     // setIsFav(isFav =>!isFav);
     dispatch(toggleFavorite(movies));
     dispatch(saveToStorage());
-    onFav();
+    if (!isFav) {
+      onFav()
+    } 
     
-  
 }
 
   const navigate =useNavigate()
@@ -44,7 +44,7 @@ const onHandleCLick=()=>{
           <img
             src={`https://image.tmdb.org/t/p/w500/${movies.poster_path}`}
             alt="’Movie Image"
-            className="w-full h-full object-cover rounded-lg mb-2 group-hover:scale-105 group-hover:brightness-50 "
+            className="w-full h-full object-cover rounded-lg mb-2 group-hover:scale-110 transition duration-300 group-hover:brightness-50 "
           />
           <div className="absolute top-2 left-2 z-10 border-2 border-yellow-500 rounded-full w-10 h-10 p-2 flex items-center backdrop-blur-md">
             <p className="text-gray-400 font-bold ">{movies.vote_average.toFixed(1)}</p>

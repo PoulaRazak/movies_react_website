@@ -1,8 +1,8 @@
 function Toast({text,state}) {
   return (
     <>
-      <div className="toast toast-top toast-end z-50">
-        <div className={`alert alert-${state}`}>
+      <div className="toast toast-button toast-end z-50">
+        <div className={`alert alert-success`}>
           <span>{text}</span>
         </div>
       </div>

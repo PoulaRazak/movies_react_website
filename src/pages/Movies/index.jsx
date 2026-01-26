@@ -59,14 +59,14 @@ useEffect(()=>{
       
               setTimeout(()=>{
                 setShowToast(false)
-              },3000);
+              },2000);
     }
 
    
 
   return (
     <>
-    {showToast && <Toast text="Item added to favorite" state={"success"}/>}
+    {showToast && <Toast text="Item added to favorite"/>}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6">
         {moviesState.movies.map((mo)=>{ 
             return  <MovieCard movies={mo} key={mo.id} onFav={handleToast}/>

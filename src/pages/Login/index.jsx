@@ -45,8 +45,17 @@ function Login() {
   }
 
     return <>
+
+    <div
+    className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920')",
+      }}
+    >
+    {/* <div className="absolute inset-0 bg-black/40"></div> */}
    
-  <div className=" flex items-center justify-center  p-10">
+  <div className=" flex items-center justify-center  p-10 ">
    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-10">
       <legend className="fieldset-legend">{t('login')}</legend>
 
@@ -84,7 +93,7 @@ function Login() {
     </fieldset>
     
     </div>
-  
+  </div>
     </>
 }
 export default Login;

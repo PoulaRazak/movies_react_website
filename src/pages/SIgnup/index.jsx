@@ -21,6 +21,15 @@ function SignUp() {
 
   return (
     <>
+
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920')",
+      }}
+    >
+
     <div className="flex items-center justify-center p-10">
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-10">
         <legend className="fieldset-legend">{t('register')}</legend>
@@ -80,6 +89,7 @@ function SignUp() {
             >Login</p>
         </div>
       </fieldset>
+      </div>
       </div>
     </>
   );

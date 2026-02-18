@@ -5,6 +5,7 @@ import { useEffect, useState} from "react";
 import { useTranslation } from 'react-i18next';
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
+import iconImage from "../../assets/images/film-reel.png"
 
 function Navbar() {
 
@@ -43,10 +44,10 @@ function Navbar() {
   return (
     <>
       <div className="flex flex-row items-center p-4 bg-linear-to-r from-red-800 to-black text-white justify-between">
-        <div className="flex flex-row items-center gap-1">
-          <FcVideoCall className="text-2xl" />
+        <div className="flex flex-row items-center gap-1 ">
+          <img src={iconImage} className="w-7 h-7"/>
 
-          <h1 className="ml-2 text-xl font-bold">Movies</h1>
+          <h1 className="ml-2 text-2xl font-bold">{t('filmak')}</h1>
         </div>
         <div className="flex flex-row gap-4">
           <Link to="/">{t('home')}</Link>

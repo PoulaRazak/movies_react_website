@@ -50,10 +50,10 @@ function Navbar() {
         {/* Main navbar row */}
         <div className="flex flex-row items-center p-4 justify-between">
           {/* Logo */}
-          <div className="flex flex-row items-center gap-1">
+          <a href="/" className="flex flex-row items-center gap-1">
             <img src={iconImage} className="w-7 h-7" />
             <h1 className="ml-2 text-2xl font-bold">{t('filmak')}</h1>
-          </div>
+          </a>
 
           {/* Desktop nav links */}
           <div className="hidden md:flex flex-row gap-4">

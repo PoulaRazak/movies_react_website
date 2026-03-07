@@ -52,26 +52,24 @@ function Home() {
           ))}
         </Swiper>
 
-        <div className="mt-10 px-4">
-          <h2 className="text-2xl font-bold text-white mb-4">Trending Now</h2>
-        </div>
+        
       </div>
 
       <Swiper
-            spaceBetween={16}
-            slidesPerView={2}
-            breakpoints={{
-              640: { slidesPerView: 3 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 5 },
-            }}
-          >
-            {trend.map((movie) => (
-              <SwiperSlide key={movie.id}>
-                <MovieCard movies={movie} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        spaceBetween={16}
+        slidesPerView={2}
+        breakpoints={{
+          640: { slidesPerView: 3 },
+          768: { slidesPerView: 4 },
+          1024: { slidesPerView: 5 },
+        }}
+      >
+        {trend.map((movie) => (
+          <SwiperSlide key={movie.id}>
+            <MovieCard movies={movie} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
     </>
   );
